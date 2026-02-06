@@ -34,8 +34,8 @@ public class ServerRest {
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
             
             // Registra gli handler per gli endpoint (V1)
-            server.createContext("/api/calcola/post", new PostHandler());
-            server.createContext("/api/calcola/get", new GetHandler());
+            server.createContext("/api/v1/calcola/post", new PostHandler());
+            server.createContext("/api/v1/calcola/get", new GetHandler());
             // Endpoint versione V2
             server.createContext("/api/v2/calcola/post", new PostHandler());
             server.createContext("/api/v2/calcola/get", new GetHandler());
@@ -54,8 +54,8 @@ public class ServerRest {
             System.out.println("Porta: " + porta);
             System.out.println();
             System.out.println("Endpoint disponibili:");
-            System.out.println("  - POST V1: http://localhost:" + porta + "/api/calcola/post");
-            System.out.println("  - GET  V1: http://localhost:" + porta + "/api/calcola/get");
+            System.out.println("  - POST V1: http://localhost:" + porta + "/api/v1/calcola/post");
+            System.out.println("  - GET  V1: http://localhost:" + porta + "/api/v1/calcola/get");
             System.out.println("  - POST V2: http://localhost:" + porta + "/api/v2/calcola/post");
             System.out.println("  - GET  V2: http://localhost:" + porta + "/api/v2/calcola/get");
             System.out.println("  - Info: http://localhost:" + porta + "/");
@@ -88,8 +88,8 @@ public class ServerRest {
         
         Map endpoints = new HashMap<>();
         Map v1 = new HashMap<>();
-        v1.put("POST", "/api/calcola/post");
-        v1.put("GET", "/api/calcola/get?operando1=X&operando2=Y&operatore=OP");
+        v1.put("POST", "/api/v1/calcola/post");
+        v1.put("GET", "/api/v1/calcola/get?operando1=X&operando2=Y&operatore=OP");
         Map v2 = new HashMap<>();
         v2.put("POST", "/api/v2/calcola/post");
         v2.put("GET", "/api/v2/calcola/get?operando1=X&operando2=Y&operatore=OP");
