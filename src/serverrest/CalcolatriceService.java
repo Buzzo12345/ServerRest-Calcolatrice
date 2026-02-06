@@ -15,7 +15,7 @@ public class CalcolatriceService {
      * 
      * @param operando1 Il primo operando
      * @param operando2 Il secondo operando
-     * @param operatore L'operatore (SOMMA, SOTTRAZIONE, MOLTIPLICAZIONE, DIVISIONE)
+    * @param operatore L'operatore (SOMMA, SOTTRAZIONE, MOLTIPLICAZIONE, DIVISIONE, POTENZA, RADICE, MODULO)
      * @return Il risultato dell'operazione
      * @throws IllegalArgumentException se l'operatore non è valido o divisione per zero
      */
@@ -56,6 +56,9 @@ public class CalcolatriceService {
 
             case "RADICE":
             case "√":   
+                if (operando2 == 0) {
+                    throw new IllegalArgumentException("Radice con indice zero non consentita");
+                }
                 if (operando1 < 0) {
                     throw new IllegalArgumentException("Radice quadrata di un numero negativo non consentita");
                 }
@@ -71,7 +74,7 @@ public class CalcolatriceService {
             default:
                 throw new IllegalArgumentException(
                     "Operatore non valido: " + operatore + 
-                    ". Operatori consentiti: SOMMA, SOTTRAZIONE, MOLTIPLICAZIONE, DIVISIONE"
+                    ". Operatori consentiti: SOMMA, SOTTRAZIONE, MOLTIPLICAZIONE, DIVISIONE, POTENZA, RADICE, MODULO"
                 );
         }
     }
