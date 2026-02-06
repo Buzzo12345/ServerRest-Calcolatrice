@@ -50,6 +50,24 @@ public class CalcolatriceService {
                 }
                 return operando1 / operando2;
                 
+            case "POTENZA":
+            case "^":
+                return Math.pow(operando1, operando2);
+
+            case "RADICE":
+            case "√":   
+                if (operando1 < 0) {
+                    throw new IllegalArgumentException("Radice quadrata di un numero negativo non consentita");
+                }
+                return Math.pow(operando1, 1.0 / operando2);
+
+            case "MODULO":
+            case "%":
+                if (operando2 == 0) {
+                    throw new IllegalArgumentException("Modulo per zero non consentito");
+                }
+                return operando1 % operando2;
+                
             default:
                 throw new IllegalArgumentException(
                     "Operatore non valido: " + operatore + 
