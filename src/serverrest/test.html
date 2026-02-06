@@ -51,7 +51,7 @@
             };
             
             try {
-                const response = await fetch('http://localhost:8080/api/calcola/post', {
+                const response = await fetch('http://localhost:8080/api/v2/calcola/post', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -70,7 +70,7 @@
             const op2 = document.getElementById('op2').value;
             const operatore = document.getElementById('operatore').value;
             
-            const url = `http://localhost:8080/api/calcola/get?operando1=${op1}&operando2=${op2}&operatore=${operatore}`;
+            const url = `http://localhost:8080/api/v2/calcola/get?operando1=${op1}&operando2=${op2}&operatore=${operatore}`;
             
             try {
                 const response = await fetch(url);

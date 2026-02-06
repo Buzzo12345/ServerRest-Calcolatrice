@@ -33,9 +33,12 @@ public class ServerRest {
             // Crea il server sulla porta specificata
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
             
-            // Registra gli handler per gli endpoint
+            // Registra gli handler per gli endpoint (V1)
             server.createContext("/api/calcola/post", new PostHandler());
             server.createContext("/api/calcola/get", new GetHandler());
+            // Endpoint versione V2
+            server.createContext("/api/v2/calcola/post", new PostHandler());
+            server.createContext("/api/v2/calcola/get", new GetHandler());
             
             // Endpoint di benvenuto
             server.createContext("/", ServerRest::gestisciBenvenuto);
@@ -51,8 +54,10 @@ public class ServerRest {
             System.out.println("Porta: " + porta);
             System.out.println();
             System.out.println("Endpoint disponibili:");
-            System.out.println("  - POST: http://localhost:" + porta + "/api/calcola/post");
-            System.out.println("  - GET:  http://localhost:" + porta + "/api/calcola/get");
+            System.out.println("  - POST V1: http://localhost:" + porta + "/api/calcola/post");
+            System.out.println("  - GET  V1: http://localhost:" + porta + "/api/calcola/get");
+            System.out.println("  - POST V2: http://localhost:" + porta + "/api/v2/calcola/post");
+            System.out.println("  - GET  V2: http://localhost:" + porta + "/api/v2/calcola/get");
             System.out.println("  - Info: http://localhost:" + porta + "/");
             System.out.println();
             System.out.println("Operatori supportati:");
@@ -82,8 +87,14 @@ public class ServerRest {
         info.put("tecnologia", "Java + GSON");
         
         Map endpoints = new HashMap<>();
-        endpoints.put("POST", "/api/calcola/post");
-        endpoints.put("GET", "/api/calcola/get?operando1=X&operando2=Y&operatore=OP");
+        Map v1 = new HashMap<>();
+        v1.put("POST", "/api/calcola/post");
+        v1.put("GET", "/api/calcola/get?operando1=X&operando2=Y&operatore=OP");
+        Map v2 = new HashMap<>();
+        v2.put("POST", "/api/v2/calcola/post");
+        v2.put("GET", "/api/v2/calcola/get?operando1=X&operando2=Y&operatore=OP");
+        endpoints.put("v1", v1);
+        endpoints.put("v2", v2);
         info.put("endpoints", endpoints);
         
         Map operatori = new HashMap<>();
