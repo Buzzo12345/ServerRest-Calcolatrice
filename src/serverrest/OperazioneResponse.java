@@ -4,6 +4,9 @@
  */
 package serverrest;
 
+import java.time.Instant;
+import java.util.UUID;
+
 /**
  *
  * @author delfo
@@ -14,6 +17,8 @@ public class OperazioneResponse {
     private String operatore;
     private double risultato;
     private String operazione;
+    private String timestamp;
+    private String requestId;
     
     // Costruttore vuoto necessario per GSON
     public OperazioneResponse() {
@@ -28,6 +33,8 @@ public class OperazioneResponse {
         this.risultato = risultato;
         this.operazione = String.format("%.2f %s %.2f = %.2f", 
             operando1, operatore, operando2, risultato);
+        this.timestamp = Instant.now().toString();
+        this.requestId = UUID.randomUUID().toString();
     }
     
     // Getter
@@ -50,6 +57,14 @@ public class OperazioneResponse {
     public String getOperazione() {
         return operazione;
     }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public String getRequestId() {
+        return requestId;
+    }
     
     // Setter
     public void setOperando1(double operando1) {
@@ -70,5 +85,13 @@ public class OperazioneResponse {
     
     public void setOperazione(String operazione) {
         this.operazione = operazione;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 }
