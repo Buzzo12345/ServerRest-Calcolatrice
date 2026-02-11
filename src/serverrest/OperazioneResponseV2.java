@@ -11,7 +11,7 @@ import java.util.UUID;
  *
  * @author delfo
  */
-public class OperazioneResponse {
+public class OperazioneResponseV2 {
     private double operando1;
     private double operando2;
     private String operatore;
@@ -21,11 +21,11 @@ public class OperazioneResponse {
     private String requestId;
     
     // Costruttore vuoto necessario per GSON
-    public OperazioneResponse() {
+    public OperazioneResponseV2() {
     }
     
     // Costruttore con parametri
-    public OperazioneResponse(double operando1, double operando2, 
+    public OperazioneResponseV2(double operando1, double operando2, 
                              String operatore, double risultato) {
         this.operando1 = operando1;
         this.operando2 = operando2;

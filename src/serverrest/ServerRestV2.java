@@ -21,7 +21,7 @@ import java.util.Map;
  * 
  * @author delfo
  */
-public class ServerRest {
+public class ServerRestV2 {
 
     /**
      * Avvia il server REST sulla porta specificata
@@ -34,11 +34,11 @@ public class ServerRest {
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
             
             // Endpoint versione V2
-            server.createContext("/api/v2/calcola/post", new PostHandler());
-            server.createContext("/api/v2/calcola/get", new GetHandler());
+            server.createContext("/api/v2/calcola/post", new PostHandlerV2());
+            server.createContext("/api/v2/calcola/get", new GetHandlerV2());
             
             // Endpoint di benvenuto
-            server.createContext("/", ServerRest::gestisciBenvenuto);
+            server.createContext("/", ServerRestV2::gestisciBenvenuto);
             
             // Avvia il server
             server.setExecutor(null); // Usa il default executor

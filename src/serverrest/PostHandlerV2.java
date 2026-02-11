@@ -26,7 +26,7 @@ import java.util.Map;
  */
 
 
-public class PostHandler implements HttpHandler {
+public class PostHandlerV2 implements HttpHandler {
     
     // Istanza Gson configurata per pretty printing
     private final Gson gson = new GsonBuilder()
@@ -49,7 +49,7 @@ public class PostHandler implements HttpHandler {
             );
             
             // GSON converte automaticamente il JSON in oggetto Java
-            OperazioneRequest request = gson.fromJson(reader, OperazioneRequest.class);
+            OperazioneRequestV2 request = gson.fromJson(reader, OperazioneRequestV2.class);
             reader.close();
             
             // Validazione
@@ -64,14 +64,14 @@ public class PostHandler implements HttpHandler {
             }
             
             // Esegue il calcolo
-            double risultato = CalcolatriceService.calcola(
+            double risultato = CalcolatriceServiceV2.calcola(
                 request.getOperando1(),
                 request.getOperando2(),
                 request.getOperatore()
             );
             
             // Crea l'oggetto risposta
-            OperazioneResponse response = new OperazioneResponse(
+            OperazioneResponseV2 response = new OperazioneResponseV2(
                 request.getOperando1(),
                 request.getOperando2(),
                 request.getOperatore(),

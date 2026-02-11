@@ -10,7 +10,7 @@ package serverrest;
  * 
  * @author delfo
  */
-public class App {
+public class AppV2 {
 
     /**
      * @param args the command line arguments
@@ -27,6 +27,6 @@ public class App {
         }
         
         // Avvia il server REST
-        ServerRest.avviaServer(porta);
+        ServerRestV2.avviaServer(porta);
     }
 }
