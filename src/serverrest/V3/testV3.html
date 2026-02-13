@@ -19,7 +19,7 @@
     
     <div>
         <label>Operatore1:</label>
-        <select id="operatore">
+        <select id="operatore1">
             <option value="METRI (M)">METRI</option>
             <option value="YARD (YD)">YARD</option>
         </select>
@@ -27,7 +27,7 @@
 
     <div>
         <label>Operatore2:</label>
-        <select id="operatore">
+        <select id="operatore2">    
             <option value="METRI (M)">METRI</option>
             <option value="YARD (YD)">YARD</option>
         </select>
@@ -44,13 +44,13 @@
     <script>
         async function calcolaPOST() {
             const data = {
-                operando1: parseFloat(document.getElementById('op1').value),
-                operando2: parseFloat(document.getElementById('op2').value),
-                operatore: document.getElementById('operatore').value
+                operando: parseFloat(document.getElementById('op1').value),
+                operatore1: document.getElementById('operatore1').value,
+                operatore2: document.getElementById('operatore2').value
             };
             
             try {
-                const response = await fetch('http://localhost:8080/api/v2/calcola/post', {
+                const response = await fetch('http://localhost:8080/api/v3/converti/post', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -65,11 +65,11 @@
         }
         
         async function calcolaGET() {
-            const op1 = document.getElementById('operando').value;
+            const op1 = document.getElementById('op1').value;
             const operatore1 = document.getElementById('operatore1').value;
             const operatore2 = document.getElementById('operatore2').value;
             
-            const url = `http://localhost:8080/api/v2/calcola/get?operando1=${op1}&operando2=${op2}&operatore1=${operatore1}&operatore2=${operatore2}`;
+            const url = `http://localhost:8080/api/v3/converti/get?operando=${op1}&operatore1=${operatore1}&operatore2=${operatore2}`;
             
             try {
                 const response = await fetch(url);
