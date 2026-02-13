@@ -64,7 +64,7 @@ public class GetHandlerV3 implements HttpHandler {
             double risultato = ConvertitoreServiceV3.converti(operando, operatore1, operatore2);
             
             // Crea l'oggetto risposta
-            OperazioneResponseV3 response = new OperazioneResponseV3(
+            ConvertitoreResponseV3 response = new ConvertitoreResponseV3(
                 operando,
                 operatore1,
                 operatore2,

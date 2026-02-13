@@ -9,17 +9,17 @@ package serverrest.V3;
  *
  * @author delfo
  */
-public class OperazioneRequestV3 {
+public class ConvertitoreRequestV3 {
     private double operando;
     private String operatore1;
     private String operatore2;
     
     // Costruttore vuoto necessario per GSON
-    public OperazioneRequestV3() {
+    public ConvertitoreRequestV3() {
     }
     
     // Costruttore con parametri
-    public OperazioneRequestV3(double operando, String operatore1, String operatore2) {
+    public ConvertitoreRequestV3(double operando, String operatore1, String operatore2) {
         this.operando = operando;
         this.operatore1 = operatore1;
         this.operatore2 = operatore2;

@@ -52,7 +52,7 @@ public class PostHandlerV3 implements HttpHandler {
             );
             
             // GSON converte automaticamente il JSON in oggetto Java
-            OperazioneRequestV3 request = gson.fromJson(reader, OperazioneRequestV3.class);
+            ConvertitoreRequestV3 request = gson.fromJson(reader, ConvertitoreRequestV3.class);
             reader.close();
             
             // Validazione
@@ -78,7 +78,7 @@ public class PostHandlerV3 implements HttpHandler {
             );
             
             // Crea l'oggetto risposta
-            OperazioneResponseV3 response = new OperazioneResponseV3(
+            ConvertitoreResponseV3 response = new ConvertitoreResponseV3(
                 request.getOperando(),
                 request.getOperatore1(),
                 request.getOperatore2(),

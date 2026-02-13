@@ -8,7 +8,7 @@ package serverrest.V2;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import serverrest.CalcolatriceServiceV3;
+import serverrest.V3.ConvertitoreServiceV3;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,7 +62,7 @@ public class GetHandlerV2 implements HttpHandler {
             String operatore = parametri.get("operatore");
             
             // Esegue il calcolo
-            double risultato = CalcolatriceServiceV3.calcola(operando1, operando2, operatore);
+            double risultato = ConvertitoreServiceV3.calcola(operando1, operando2, operatore);
             
             // Crea l'oggetto risposta
             OperazioneResponseV2 response = new OperazioneResponseV2(
