@@ -54,8 +54,8 @@ public class ServerRestV3 {
             System.out.println("Porta: " + porta);
             System.out.println();
             System.out.println("Endpoint disponibili:");
-            System.out.println("  - POST V2: http://localhost:" + porta + "/api/v3/converti/post");
-            System.out.println("  - GET  V2: http://localhost:" + porta + "/api/v3/converti/get");
+            System.out.println("  - POST V3: http://localhost:" + porta + "/api/v3/converti/post");
+            System.out.println("  - GET  V3: http://localhost:" + porta + "/api/v3/converti/get");
             System.out.println("  - Info: http://localhost:" + porta + "/");
             System.out.println();
             System.out.println("Unità di misura supportate:");

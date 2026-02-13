@@ -32,9 +32,10 @@ public class ConvertitoreServiceV3{
         
         switch (op1) {
             case "METRI":
+            case "METRI (M)":
             case "MT":
             case "M":
-                if (op2.equals("YARD")) {
+                if (op2.equals("YARD") || op2.equals("YARD (YD)")) {
                     return operando * 1.09361;
                 } else {
                     throw new IllegalArgumentException(
@@ -43,8 +44,9 @@ public class ConvertitoreServiceV3{
                     );
                 }
             case "YARD":
+            case "YARD (YD)":
             case "YD":
-                if (op2.equals("METRI")) {
+                if (op2.equals("METRI") || op2.equals("METRI (M)")) {
                     return operando / 1.09361;
                 } else {
                     throw new IllegalArgumentException(
