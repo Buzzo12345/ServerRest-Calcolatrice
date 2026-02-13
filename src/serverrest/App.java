@@ -3,16 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
-package serverrest.V3;
+package serverrest;
 
-import serverrest.V2.AppV2;
+import serverrest.V3.ServerRestV3;
 
 /**
  * Entry point dell'applicazione Calcolatrice REST
  * 
  * @author delfo
  */
-public class AppV3 extends AppV2 {
+public class App {
 
     /**
      * @param args the command line arguments

@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package serverrest;
+package serverrest.V3;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
+import serverrest.V2.PostHandlerV2;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -26,7 +29,7 @@ import java.util.Map;
  */
 
 
-public class PostHandlerV2 implements HttpHandler {
+public class PostHandlerV3 implements HttpHandler {
     
     // Istanza Gson configurata per pretty printing
     private final Gson gson = new GsonBuilder()
@@ -49,7 +52,7 @@ public class PostHandlerV2 implements HttpHandler {
             );
             
             // GSON converte automaticamente il JSON in oggetto Java
-            OperazioneRequestV2 request = gson.fromJson(reader, OperazioneRequestV2.class);
+            OperazioneRequestV3 request = gson.fromJson(reader, OperazioneRequestV3.class);
             reader.close();
             
             // Validazione
@@ -64,14 +67,14 @@ public class PostHandlerV2 implements HttpHandler {
             }
             
             // Esegue il calcolo
-            double risultato = CalcolatriceServiceV2.calcola(
+            double risultato = ConvertitoreServiceV3.calcola(
                 request.getOperando1(),
                 request.getOperando2(),
                 request.getOperatore()
             );
             
             // Crea l'oggetto risposta
-            OperazioneResponseV2 response = new OperazioneResponseV2(
+            OperazioneResponseV3 response = new OperazioneResponseV3(
                 request.getOperando1(),
                 request.getOperando2(),
                 request.getOperatore(),

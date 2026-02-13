@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
-package serverrest;
+package serverrest.V3;
 
 import com.sun.net.httpserver.HttpServer;
+
+import serverrest.V3.GetHandlerV3;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,7 +24,7 @@ import java.util.Map;
  * 
  * @author delfo
  */
-public class ServerRestV3 extends ServerRestV2 {
+public class ServerRestV3 {
 
     /**
      * Avvia il server REST sulla porta specificata
@@ -34,8 +37,8 @@ public class ServerRestV3 extends ServerRestV2 {
             HttpServer server = HttpServer.create(new InetSocketAddress(porta), 0);
             
             // Endpoint versione V2
-            server.createContext("/api/v2/calcola/post", new PostHandlerV3());
-            server.createContext("/api/v2/calcola/get", new GetHandlerV2());
+            server.createContext("/api/v3/converti/post", new PostHandlerV3());
+            server.createContext("/api/v3/converti/get", new GetHandlerV2());
             
             // Endpoint di benvenuto
             server.createContext("/", ServerRestV3::gestisciBenvenuto);
@@ -51,12 +54,12 @@ public class ServerRestV3 extends ServerRestV2 {
             System.out.println("Porta: " + porta);
             System.out.println();
             System.out.println("Endpoint disponibili:");
-            System.out.println("  - POST V2: http://localhost:" + porta + "/api/v2/calcola/post");
-            System.out.println("  - GET  V2: http://localhost:" + porta + "/api/v2/calcola/get");
+            System.out.println("  - POST V2: http://localhost:" + porta + "/api/v3/converti/post");
+            System.out.println("  - GET  V2: http://localhost:" + porta + "/api/v3/converti/get");
             System.out.println("  - Info: http://localhost:" + porta + "/");
             System.out.println();
-            System.out.println("Operatori supportati:");
-            System.out.println("  SOMMA, SOTTRAZIONE, MOLTIPLICAZIONE, DIVISIONE, POTENZA, RADICE, MODULO");
+            System.out.println("Unità di misura supportate:");
+            System.out.println(" - METRI, YARD");
             System.out.println();
             System.out.println("Premi Ctrl+C per fermare il server");
             System.out.println("==============================================");
@@ -78,24 +81,19 @@ public class ServerRestV3 extends ServerRestV2 {
         
         Map info = new HashMap<>();
         info.put("messaggio", "Benvenuto alla Calcolatrice REST API");
-        info.put("versione", "2.0.0");
+        info.put("versione", "3.0.0");
         info.put("tecnologia", "Java + GSON");
         
         Map endpoints = new HashMap<>();
-        Map v2 = new HashMap<>();
-        v2.put("POST", "/api/v2/calcola/post");
-        v2.put("GET", "/api/v2/calcola/get?operando1=X&operando2=Y&operatore=OP");
-        endpoints.put("v2", v2);
+        Map v3 = new HashMap<>();
+        v3.put("POST", "/api/v3/converti/post");
+        v3.put("GET", "/api/v3/converti/get?operando1=X&operando2=Y&operatore=OP");
+        endpoints.put("v3", v3);
         info.put("endpoints", endpoints);
         
         Map operatori = new HashMap<>();
-        operatori.put("somma", "SOMMA o +");
-        operatori.put("sottrazione", "SOTTRAZIONE o -");
-        operatori.put("moltiplicazione", "MOLTIPLICAZIONE o * o X");
-        operatori.put("divisione", "DIVISIONE o /");
-        operatori.put("potenza", "POTENZA o ^");
-        operatori.put("radice", "RADICE o √ (indice = operando2)");
-        operatori.put("modulo", "MODULO o %");
+        operatori.put("METRI", "Conversione in metri");
+        operatori.put("YARD", "Conversione in yard");
         info.put("operatori_supportati", operatori);
         
         String jsonRisposta = gson.toJson(info);
