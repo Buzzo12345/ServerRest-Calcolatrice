@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
-package serverrest;
+package serverrest.V3;
+
+import serverrest.V2.AppV2;
 
 /**
  * Entry point dell'applicazione Calcolatrice REST

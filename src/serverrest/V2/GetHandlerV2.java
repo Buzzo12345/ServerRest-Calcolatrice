@@ -3,10 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package serverrest;
+package serverrest.V2;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
+import serverrest.CalcolatriceServiceV3;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -59,7 +62,7 @@ public class GetHandlerV2 implements HttpHandler {
             String operatore = parametri.get("operatore");
             
             // Esegue il calcolo
-            double risultato = CalcolatriceServiceV2.calcola(operando1, operando2, operatore);
+            double risultato = CalcolatriceServiceV3.calcola(operando1, operando2, operatore);
             
             // Crea l'oggetto risposta
             OperazioneResponseV2 response = new OperazioneResponseV2(
