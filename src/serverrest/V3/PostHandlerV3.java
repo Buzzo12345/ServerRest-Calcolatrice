@@ -61,23 +61,27 @@ public class PostHandlerV3 implements HttpHandler {
                 return;
             }
             
-            if (request.getOperatore() == null || request.getOperatore().trim().isEmpty()) {
+            if (request.getOperatore1() == null || request.getOperatore1().trim().isEmpty()) {
+                inviaErrore(exchange, 400, "Operatore mancante o vuoto");
+                return;
+            }
+            else if (request.getOperatore2() == null || request.getOperatore2().trim().isEmpty()) {
                 inviaErrore(exchange, 400, "Operatore mancante o vuoto");
                 return;
             }
             
             // Esegue il calcolo
-            double risultato = ConvertitoreServiceV3.calcola(
-                request.getOperando1(),
-                request.getOperando2(),
-                request.getOperatore()
+            double risultato = ConvertitoreServiceV3.converti(
+                request.getOperando(),
+                request.getOperatore1(),
+                request.getOperatore2()
             );
             
             // Crea l'oggetto risposta
             OperazioneResponseV3 response = new OperazioneResponseV3(
-                request.getOperando1(),
-                request.getOperando2(),
-                request.getOperatore(),
+                request.getOperando(),
+                request.getOperatore1(),
+                request.getOperatore2(),
                 risultato
             );
             

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package serverrest;
+package serverrest.V3;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -11,46 +11,46 @@ import java.util.UUID;
  *
  * @author delfo
  */
-public class OperazioneResponseV2 {
-    private double operando1;
-    private double operando2;
-    private String operatore;
-    private double risultato;
+public class OperazioneResponseV3 {
+    private Double operando;
+    private String operatore1;
+    private String operatore2;
+    private Double risultato;
     private String operazione;
     private String timestamp;
     private String requestId;
     
     // Costruttore vuoto necessario per GSON
-    public OperazioneResponseV2() {
+    public OperazioneResponseV3() {
     }
     
     // Costruttore con parametri
-    public OperazioneResponseV2(double operando1, double operando2, 
-                             String operatore, double risultato) {
-        this.operando1 = operando1;
-        this.operando2 = operando2;
-        this.operatore = operatore;
+    public OperazioneResponseV3(Double operando, String operatore1, 
+                             String operatore2, Double risultato) {
+        this.operando = operando;
+        this.operatore1 = operatore1;
+        this.operatore2 = operatore2;
         this.risultato = risultato;
         this.operazione = String.format("%.2f %s %.2f = %.2f", 
-            operando1, operatore, operando2, risultato);
+            operando, operatore1, operatore2, risultato);
         this.timestamp = Instant.now().toString();
         this.requestId = UUID.randomUUID().toString();
     }
     
     // Getter
-    public double getOperando1() {
-        return operando1;
+    public Double getOperando() {
+        return operando;
     }
     
-    public double getOperando2() {
-        return operando2;
+    public String getOperatore1() {
+        return operatore1;
     }
     
-    public String getOperatore() {
-        return operatore;
+    public String getOperatore2() {
+        return operatore2;
     }
     
-    public double getRisultato() {
+    public Double getRisultato() {
         return risultato;
     }
     
@@ -67,19 +67,19 @@ public class OperazioneResponseV2 {
     }
     
     // Setter
-    public void setOperando1(double operando1) {
-        this.operando1 = operando1;
+    public void setOperando(Double operando) {
+        this.operando = operando;
     }
     
-    public void setOperando2(double operando2) {
-        this.operando2 = operando2;
+    public void setOperatore1(String operatore1) {
+        this.operatore1 = operatore1;
     }
     
-    public void setOperatore(String operatore) {
-        this.operatore = operatore;
+    public void setOperatore2(String operatore2) {
+        this.operatore2 = operatore2;
     }
     
-    public void setRisultato(double risultato) {
+    public void setRisultato(Double risultato) {
         this.risultato = risultato;
     }
     

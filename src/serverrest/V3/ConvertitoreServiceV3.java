@@ -19,7 +19,7 @@ public class ConvertitoreServiceV3{
      * @return Il risultato dell'operazione
      * @throws IllegalArgumentException se l'operatore non è valido o divisione per zero
      */
-    public static double calcola(Double operando, String operatore1, String operatore2) 
+    public static double converti(Double operando, String operatore1, String operatore2) 
             throws IllegalArgumentException {
         
         if (operando == null) {
@@ -39,7 +39,7 @@ public class ConvertitoreServiceV3{
                 } else {
                     throw new IllegalArgumentException(
                         "Operatore di conversione non valido: " + operatore2 + 
-                        ". Operatori consentiti: CENTIMETRI, MILLIMETRI"
+                        ". Operatori consentiti: YARD"
                     );
                 }
             case "YARD":
@@ -54,7 +54,7 @@ public class ConvertitoreServiceV3{
                 }
             default:
                 throw new IllegalArgumentException(
-                    "Operatore di conversione non valido: " + operatore1 + 
+                    "Operatori di conversione non valido: " + operatore1 + ", " + operatore2 + 
                     ". Operatori consentiti: METRI, YARD"
                 );
         }

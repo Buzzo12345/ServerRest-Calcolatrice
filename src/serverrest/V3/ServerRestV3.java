@@ -38,7 +38,7 @@ public class ServerRestV3 {
             
             // Endpoint versione V2
             server.createContext("/api/v3/converti/post", new PostHandlerV3());
-            server.createContext("/api/v3/converti/get", new GetHandlerV2());
+            server.createContext("/api/v3/converti/get", new GetHandlerV3());
             
             // Endpoint di benvenuto
             server.createContext("/", ServerRestV3::gestisciBenvenuto);

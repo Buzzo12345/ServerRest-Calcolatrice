@@ -8,7 +8,6 @@ package serverrest.V3;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import serverrest.V2.GetHandlerV2;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,27 +47,27 @@ public class GetHandlerV3 implements HttpHandler {
             Map<String, String> parametri = estraiParametri(exchange.getRequestURI().getQuery());
             
             // Validazione parametri
-            if (!parametri.containsKey("operando1") || 
-                !parametri.containsKey("operando2") || 
-                !parametri.containsKey("operatore")) {
+            if (!parametri.containsKey("operando") || 
+                !parametri.containsKey("operatore1") || 
+                !parametri.containsKey("operatore2")) {
                 inviaErrore(exchange, 400, 
-                    "Parametri mancanti. Necessari: operando1, operando2, operatore");
+                    "Parametri mancanti. Necessari: operando, operatore1, operatore2");
                 return;
             }
             
             // Parsing dei valori
-            double operando1 = Double.parseDouble(parametri.get("operando1"));
-            double operando2 = Double.parseDouble(parametri.get("operando2"));
-            String operatore = parametri.get("operatore");
+            double operando = Double.parseDouble(parametri.get("operando"));
+            String operatore1 = parametri.get("operatore1");
+            String operatore2 = parametri.get("operatore2");
             
             // Esegue il calcolo
-            double risultato = ConvertitoreServiceV3.calcola(operando1, operando2, operatore);
+            double risultato = ConvertitoreServiceV3.converti(operando, operatore1, operatore2);
             
             // Crea l'oggetto risposta
             OperazioneResponseV3 response = new OperazioneResponseV3(
-                operando1,
-                operando2,
-                operatore,
+                operando,
+                operatore1,
+                operatore2,
                 risultato
             );
             
